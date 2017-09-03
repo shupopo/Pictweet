@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.business.domain.User;
 import com.example.business.repository.UserRepository;
+import com.example.util.UserCustom;
 
 @Controller
 public class UserController {
@@ -62,7 +63,7 @@ public class UserController {
 	}
 	
 	@ModelAttribute(name = "login_user")
-	public UserDetails setLoginUser(@AuthenticationPrincipal UserDetails userDetails) {
-	    return userDetails;
+	public UserDetails setLoginUser(@AuthenticationPrincipal UserCustom userCustom) {
+	  return userCustom;
 	}
 }

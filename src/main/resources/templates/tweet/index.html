@@ -29,7 +29,7 @@
     <div class="contents row" th:each="tweet : ${tweets}">
         <div class="content__post" th:style="'background-image: url(' + @{${tweet.image}} + ');'">
             <p th:text="${tweet.text}"></p>
-            <span class="name" th:text="${tweet.name}"></span>
+        <span class="name" th:text="${tweet.user.username}"></span>
         </div>
     </div>
    <div class="contents row">
@@ -37,6 +37,7 @@
             <li th:class="${tweets.isFirst()} ? disabled"><a th:href="@{/(page=0)}">&laquo;</a></li>
             <li th:class="${!tweets.hasPrevious()} ? disabled"><a th:href="@{/(page=${tweets.getNumber() - 1})}">&larr;</a></li>
             <li th:each="pageNumber : ${#numbers.sequence(tweets.getNumber() - 5, tweets.getNumber() + 5)}" th:if="${(pageNumber ge 0) and (pageNumber lt tweets.getTotalPages())}" th:class="${tweets.getNumber() == pageNumber} ? 'active pointer-disabled'" >
+                
                 <a th:href="@{/(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
             </li>
             <li th:class="${!tweets.hasNext()} ? disabled"><a th:href="@{/(page=${tweets.getNumber() + 1})}">&rarr;</a></li>
