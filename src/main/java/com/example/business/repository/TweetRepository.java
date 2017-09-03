@@ -8,13 +8,11 @@ import org.springframework.stereotype.Repository;
 import com.example.business.domain.Tweet;
 import java.util.List;
 
-
-
 @Repository
 public interface TweetRepository extends JpaRepository<Tweet, Long> {
 
-    List<Tweet> findAllByOrderByIdDesc();
-    
-    Page<Tweet> findAllByOrderByIdDesc(Pageable pageable);
+	List<Tweet> findAllByOrderByIdDesc();
+
+	Page<Tweet> findAllByOrderByIdDesc(Pageable pageable);
 
 }
