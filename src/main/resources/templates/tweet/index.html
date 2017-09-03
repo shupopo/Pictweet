@@ -28,19 +28,23 @@
 </header>
 <div class="contents row" th:each="tweet : ${tweets}">
     <div class="content__post" th:style="'background-image: url(' + @{${tweet.image}} + ');'">
-        <th:block th:if="${login_user != null and login_user.id==tweet.user.id}">
         <div class="more">
             <span>■</span>
             <ul class="more_list">
+            <li>
+    <a th:href="@{'/tweet/' + ${tweet.id}}">詳細</a>
+                    </li>
+                         <th:block th:if="${login_user != null and login_user.id==tweet.user.id}">
                 <li><a th:href="@{'/tweet/' + ${tweet.id} + '/edit'}">編集</a></li>
                 <li>
                     <form th:action="@{'/tweet/' + ${tweet.id} + '/delete'}" method="post">
                         <input type="submit" value="削除" />
                     </form>
                 </li>
+                 </th:block>
             </ul>
         </div>
-        </th:block>
+       
         <p th:text="${tweet.text}"></p>
         <span class="name" th:text="${tweet.user.username}"></span>
     </div>
