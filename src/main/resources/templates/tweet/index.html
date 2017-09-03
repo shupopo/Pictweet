@@ -2,9 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
+<link rel="stylesheet" href="/css/setting.css" />
+<link rel="stylesheet" href="/css/style.css" />
 <title>Index Page</title>
 </head>
 <body>
-    <p>Hello World!</p>
+    <header class="header">
+        <div class="header__bar row">
+            <h1 class="grid-6">
+                <a href="/">PicTweet</a>
+            </h1>
+            <div class="grid-6 user_nav">
+                <a class="post" href="/tweet/new">投稿する</a>
+            </div>
+        </div>
+    </header>
+    <div class="contents row" th:each="tweet : ${tweets}">
+        <div class="content__post" th:style="'background-image: url(' + @{${tweet.image}} + ');'">
+            <p th:text="${tweet.text}"></p>
+            <span class="name" th:text="${tweet.name}"></span>
+        </div>
+    </div>
+        <div th:if="${tweets.getTotalPages() != 1}" class="contents row">
+        <ul class="pagination" style="text-align: center;">
+            <li th:class="${tweets.getNumber() == 0} ? disabled"><a th:href="@{/(page=1)}">&laquo;</a></li>
+            <li th:class="${tweets.getNumber() == 0} ? disabled"><a th:href="@{/(page=${tweets.getNumber()})}">&larr;</a></li>
+            <li th:class="${tweets.getNumber() == (page - 1)} ? 'active pointer-disabled'" th:each="page : ${#numbers.sequence(pager.getStartPage(), pager.getEndPage())}">
+                <a th:href="@{/(page=${page})}" th:text="${page}"></a>
+            </li>
+            <li th:class="${tweets.getNumber() + 1 == tweets.getTotalPages()} ? disabled"><a th:href="@{/(page=${tweets.getNumber() + 2})}">&rarr;</a></li>
+            <li th:class="${tweets.getNumber() + 1 == tweets.getTotalPages()} ? disabled"><a th:href="@{/(page=${tweets.getTotalPages()})}">&raquo;</a></li>
+        </ul>
+    </div>
+    <footer>
+        <p>Copyright PicTweet 2017.</p>
+    </footer>
 </body>
 </html>
