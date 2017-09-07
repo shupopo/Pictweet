@@ -22,7 +22,7 @@ public class Comment {
 
     //追加箇所
     @ManyToOne
-    private User user;
+    private User tsukaite;
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class Comment {
 
     //userプロパティのゲッターとセッターを追加
     public User getUser() {
-        return user;
+        return tsukaite;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.tsukaite = user;
     }
 
 }

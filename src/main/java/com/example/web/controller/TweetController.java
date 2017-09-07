@@ -35,12 +35,6 @@ public class TweetController {
 	
 	@Autowired UserRepository userRepository;
 
-	private static final int BUTTONS_TO_SHOW = 5;
-
-	private static final int INITIAL_PAGE = 0;
-
-	private static final int INITIAL_PAGE_SIZE = 5;
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index(@PageableDefault(size = 5) Pageable pageable, ModelAndView mav, @AuthenticationPrincipal UserDetails userDetails) {
         Page<Tweet> tweets = tweetRepository.findAllByOrderByIdDesc(pageable);
