@@ -46,8 +46,7 @@
         </div>
        
         <p th:text="${tweet.text}"></p>
-        <span class="name" th:text="${tweet.User.username}"></span>
-        	<!-- ここのUserはエンティティの変数ではなく、型名を示している？ -->
+        <span class="name" th:text="${tweet.user.username}"></span>
     </div>
 </div>
    <div class="contents row">

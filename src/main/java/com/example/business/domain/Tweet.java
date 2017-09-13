@@ -27,7 +27,7 @@ public class Tweet {
 	
 	@ManyToOne
 	@JoinColumn(updatable = false)
-	private User user;
+	private User tsukaite;
 	
     @OneToMany(mappedBy = "tweet")
     private List<Comment> comments;
@@ -65,11 +65,11 @@ public class Tweet {
 	}
 	
 	public User getUser() {
-	    return user;
+	    return tsukaite;
 	}
 
 	public void setUser(User user) {
-	    this.user = user;
+	    this.tsukaite = user;
 	}
 	
 	public List<Comment> getComments() {

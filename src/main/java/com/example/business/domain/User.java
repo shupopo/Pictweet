@@ -23,10 +23,10 @@ public class User {
 	
 	private String email;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "tsukaite")
 	private List<Tweet> tweets;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "tsukaite")
     private List<Comment> comments;
 
 	public Long getId() {
