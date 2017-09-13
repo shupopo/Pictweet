@@ -10,7 +10,9 @@ public class UserCustom extends User {
     private Long id;
 
     public UserCustom(Long id, String username, String password, Set<? extends GrantedAuthority> autorities) {
-        super(username, password, autorities);
+    //Set<? extends GrantedAuthority>については
+    	//http://qiita.com/sukoyakarizumu/items/a95d88e294940c31b6fc
+    	super(username, password, autorities);
         this.id = id;
     }
 
